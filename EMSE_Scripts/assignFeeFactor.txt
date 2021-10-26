@@ -1,0 +1,16 @@
+id1 = "11CAP";
+id2 = "00000";
+id3 = "00005";
+
+var capId = aa.cap.getCapID(id1, id2, id3).getOutput();
+
+var result = aa.finance.assignFeeFactor(capId, true);
+
+if(result.getSuccess())
+{
+  aa.print("Success")
+}
+else
+{
+  aa.print("fail");
+}

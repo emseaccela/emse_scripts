@@ -1,0 +1,34 @@
+var grp = "Building";
+var typ = "AtestType";
+var stype = "AtestSubtype";
+var cat = "AtestCategory";
+var desc = "auto test after";
+
+var capModelResult = aa.cap.getCapModel();
+if(capModelResult.getSuccess() == false)
+{
+    aa.print("get cap model error:" + capModelResult.getErrorMessage());
+    isProcess = "false";
+} 
+else 
+{
+	capModel = capModelResult.getOutput();
+	capModel.setCapClass("INCOMPLETE EST");
+	capTypeModel = capModel.getCapType();
+	capTypeModel.setAuditStatus("A");
+	capTypeModel.setGroup(grp);
+	capTypeModel.setType(typ);
+	capTypeModel.setSubType(stype);
+	capTypeModel.setCategory(cat);
+	capTypeModel.setServiceProviderCode("AUTOTEST");
+}
+var appCreateResult = aa.cap.createPartialRecord(capModel);
+if(appCreateResult.getSuccess())
+{
+  aa.print(appCreateResult.getOutput());
+  aa.print("Success")
+}
+else
+{
+  aa.print("Failed:" + appCreateResult.getErrorMessage());
+}

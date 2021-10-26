@@ -1,0 +1,23 @@
+//This is a overload method. 
+//Parameters: from, to, cc, templateName, contentVariables, capScriptID, fileNames
+var spc = "AUTOTEST";
+var capIDValue = "04BLD-00000-00013";
+var auditID = "ADMIN";
+var from = "auto@achievo.com";
+var to = "balint.li@achievo.com";
+var cc = "rocket.luo@achievo.com";
+var templateName = "ACTIVATION_EMAIL_CONTENT";
+var contentVariables = aa.util.newHashtable();
+var capScriptID = aa.cap.getCapIDByIDValue(spc, capIDValue, auditID).getOutput();
+var fileNames = new Array();
+
+var result;
+result = aa.document.sendEmailAndSaveAsDocument(from, to, cc, templateName, contentVariables, capScriptID, fileNames);
+if (result.getSuccess())
+{
+    aa.print("Success");
+}
+else
+{
+    aa.print("Failed:" + result.getErrorMessage());
+}

@@ -1,0 +1,10 @@
+var result;
+result = aa.workflow.getProcessNoteScriptModel();
+if (result.getSuccess())
+{
+    aa.print("Success");
+}
+else
+{
+    aa.print("Failed:" + result.getErrorMessage());
+}

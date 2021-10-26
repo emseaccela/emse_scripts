@@ -1,0 +1,71 @@
+id1 = "11CAP";
+id2 = "00000";
+id3 = "00007";
+stepNumber = 2;
+processID = 10000052;
+docID = 10004697;
+var result;
+
+capID = getCapID(id1,id2,id3);
+taskItemModel = getTaskItemModel(capID, stepNumber, processID );
+documentEntityAssociationModelListResult = aa.document.getRelatedReviewers(docID , taskItemModel);
+if(documentEntityAssociationModelListResult.getSuccess())
+{
+	var documentEntityAssociationModelList = documentEntityAssociationModelListResult.getOutput();
+	if(documentEntityAssociationModelList !=null && documentEntityAssociationModelList.size() > 0)
+	{	
+		documentEntityAssociationModel = documentEntityAssociationModelList.get(0);
+		//assign new reviewer to prevent duplicate DB UIX.
+		documentEntityAssociationModel.setEntityID1("AUTOTEST" + documentEntityAssociationModel.getEntityID1());
+		result = aa.document.assignReviewer(documentEntityAssociationModel);
+		if (result.getSuccess())
+		{
+		    aa.print("Success");
+		}
+		else
+		{
+		    aa.print("Failed:" + result.getErrorMessage());
+		}		
+	}
+	else
+	{
+		aa.print("Failed:" + "cannot get documentEntityAssociationModelList");
+	}
+}
+else
+{
+	aa.print("Failed:" + documentEntityAssociationModelListResult.getErrorMessage());
+}
+
+
+function getCapID(capId1, capId2, capId3)
+{
+	capIdResult = aa.cap.getCapID(capId1, capId2, capId3);
+	
+	if(capIdResult.getSuccess()) 
+	{	
+		capId  = capIdResult.getOutput(); 
+		return capId ;
+	}
+	else
+	{
+		aa.print("Get capID error, maybe the capID is not found: "+ capIdResult.getErrorMessage());		
+	}
+
+	return null;
+}
+
+function getTaskItemModel(capID, stepNumber, processID )
+{
+	var taskItemScriptResult = aa.workflow.getTask(capID,  stepNumber, processID);
+	if(taskItemScriptResult.getSuccess())
+	{
+		return taskItemScriptResult.getOutput().getTaskItem();
+	}	
+	else
+	{
+		aa.print("get Task Item Error" + taskItemScriptResult.getErrorMessage());
+	}
+	
+	return null;
+}

@@ -1,0 +1,12 @@
+//String
+var documentID = "10000087";
+var result;
+result = aa.document.getDocumentByPK(documentID);
+if (result.getSuccess())
+{
+    aa.print("Success");
+}
+else
+{
+    aa.print("Failed:" + result.getErrorMessage());
+}

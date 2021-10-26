@@ -1,0 +1,19 @@
+id1="11CAP";
+id2="00000";
+id3="00001";
+
+capResult = aa.cap.getCapID(id1, id2, id3);
+if(capResult.getSuccess()) {
+	capID = capResult.getOutput();	
+	
+	feeResult = aa.finance.getFeeItemByCapID(capID);
+	if(feeResult.getSuccess())
+	{
+    aa.print("Success")
+        }
+else{
+		aa.print("Fail to get fee items based on capID.");
+	}
+}else{
+	aa.print("Fail to get capID.");
+}	

@@ -1,0 +1,57 @@
+// -------------------------------------------------------------------------------------------------------------
+// Demon script for payment with trust account.
+// -------------------------------------------------------------------------------------------------------------
+var PEOPLE_TYPE_CONTACT = "Contact";
+var PEOPLE_TYPE_PEOPLE = "Licensed People";
+var PEOPLE_TYPE_PARCEL = "Parcel";
+var PEOPLE_TYPE_ADDRESS = "Address";
+
+
+main();
+
+
+function main()
+{
+	var capID = aa.cap.getCapID("11CAP","00000","00006").getOutput();
+	if (capID == null)
+	{
+		aa.print("ERROR: capID should not be null");
+		return;
+	}
+
+	var payment = initPaymentScriptModel(capID);
+
+	var paymentResult = aa.finance.makePayment(payment);
+	if (paymentResult.getSuccess())
+	{
+		aa.print("Success");
+	}
+	else
+	{
+		aa.print("ERROR: Failed to do payment: " + paymentResult.getErrorMessage());
+	}	
+}
+
+
+function initPaymentScriptModel(capID)
+{
+	var paymentAmount = 1.0
+	var paymentScriptModel = aa.finance.createPaymentScriptModel();
+	paymentScriptModel.setCapID(capID);
+	paymentScriptModel.setAmountNotAllocated(paymentAmount);
+	paymentScriptModel.setAuditID("admin");
+	paymentScriptModel.setCashierID("admin");
+	paymentScriptModel.setPaymentAmount(paymentAmount);
+	paymentScriptModel.setPaymentDate(aa.date.getCurrentDate()); 
+	paymentScriptModel.setPaymentMethod("Cash");
+	paymentScriptModel.setPaymentStatus("Paid");
+	paymentScriptModel.setSessionNbr(0);
+
+	paymentScriptModel.setBatchTransCode(100);
+	paymentScriptModel.setTranCode("000");
+	paymentScriptModel.setTotalInvoiceAmount("100");
+	paymentScriptModel.setTotalPaidAmount("25");
+	paymentScriptModel.setProcessingFee("200");
+	paymentScriptModel.setPaymentChange("10");
+	return paymentScriptModel;
+}

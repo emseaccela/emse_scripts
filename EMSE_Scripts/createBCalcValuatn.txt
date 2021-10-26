@@ -1,0 +1,23 @@
+
+
+var capIDModel = aa.cap.getCapID("11CAP","00000","00005").getOutput();
+var  bCalcValuatnScriptModel = aa.finance.createBCalcValuatnScriptModel();
+bCalcValuatnScriptModel.setCapID(capIDModel);
+bCalcValuatnScriptModel.setUseTyp("NewVersion");
+bCalcValuatnScriptModel.setConTyp("NewVersion");
+bCalcValuatnScriptModel.setUnitTyp("NewVersion");
+bCalcValuatnScriptModel.setVersion("NewVersion");
+bCalcValuatnScriptModel.setAuditID("ADMIN");
+bCalcValuatnScriptModel.setTotalValue(1.0);
+bCalcValuatnScriptModel.setAuditDate(aa.date.getCurrentDate());
+bCalcValuatnScriptModel.setCalcValueSeqNbr(5);
+bCalcValuatnScriptModel.setUnitValue(5);
+var result = aa.finance.createBCalcValuatn(bCalcValuatnScriptModel);
+if (result.getSuccess())
+{
+    aa.print("Success")
+}
+else
+{
+    aa.print("ERROR: " + result .getErrorMessage()); 
+}

@@ -1,0 +1,33 @@
+var capId1 = "11CAP";
+var capId2 = "00000";
+var capId3 = "00001";
+var conditionNumber = 178527;
+
+var capId = aa.cap.getCapID(capId1, capId2, capId3).getOutput();
+
+// get condition
+var capConditionResult = aa.capCondition.getCapCondition(capId, conditionNumber);
+
+if (capConditionResult.getSuccess())
+{
+		
+	var capCondition = capConditionResult.getOutput();
+
+	// change the comment
+	capCondition.setConditionComment("comment have changed, Hello World!");
+	var result = aa.capCondition.editCapCondition(capCondition);
+			
+	if (result.getSuccess())
+	{
+    aa.print("Success")
+        }
+	else
+	{
+		aa.print("ERROR: " + result.getErrorMessage()); 
+	}
+	
+}
+else
+{
+	aa.print("ERROR: " + addressConditionResult.getErrorMessage()); 
+}

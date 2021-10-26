@@ -1,0 +1,13 @@
+var feeSchedule= "FEE";
+var checkDate = aa.date.getCurrentDate();
+var scriptResult = aa.fee.getRefFeeScheduleVersionsByDate(feeSchedule, checkDate);	
+	if(scriptResult.getSuccess())		
+	{		
+		aa.print("Success");
+		
+	}		
+	else		
+	{		
+		aa.print("ERROR: " + scriptResult.getErrorMessage()); 	
+
+	}

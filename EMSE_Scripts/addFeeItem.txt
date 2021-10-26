@@ -1,0 +1,27 @@
+id1="11CAP";
+id2="00000";
+id3="00001";
+
+
+var result;
+var dt=null;
+
+dt = aa.date.getCurrentDate();
+result = aa.cap.getCapID(id1, id2, id3);
+if(result.getSuccess()){
+    var capID = result.getOutput();
+    result = aa.fee.addFeeItem(capID, 'ICBO_PERMIT', 
+        'ICBO_001', '', 'aa', '', '', '', '12.30,0,0,999999', 1.0,
+        '', 887.0, dt, dt, dt, '', '', '', '', '', 'N',
+        'NEW', 'LINEAR_WITH_MIN_MAX', 'ADMIN');
+    if(result.getSuccess())
+{
+    aa.print("Success")
+}
+else{
+		aa.print("Add FeeItem error:"+result.getErrorMessage());
+	}
+}else{
+	aa.print("Get capID error, maybe the capID is not found: "+result.getErrorMessage()+". "+"Please use another capID to test again.");
+
+}

@@ -1,0 +1,22 @@
+id1 = "11CAP";
+id2 = "00000";
+id3 = "00005";
+
+var result = aa.cap.getCapID(id1, id2, id3);
+var capId = result.getOutput();
+
+var feeCod = "FEEPEARL";
+var fsched = "FEE";
+var fperiod = "P2";
+var fqty = 1;
+var finvoice = "15";
+
+assessFeeResult = aa.finance.createFeeItem(capId,fsched,feeCod,fperiod,fqty);
+if (assessFeeResult.getSuccess())
+{
+    aa.print("Success")
+}
+else
+{
+	aa.print("fail");
+}

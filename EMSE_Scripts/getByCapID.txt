@@ -1,0 +1,28 @@
+id1 = "11CAP";
+id2 = "00000";
+id3 = "00001";	
+var useAppSpecificGroupName = false;
+var result = aa.cap.getCapID(id1, id2, id3);
+var capId = result.getOutput();
+var appSpecInfoResult = aa.appSpecificInfo.getByCapID(capId);
+if (appSpecInfoResult.getSuccess()){
+	appArray = new Array();
+	var fAppSpecInfoObj = appSpecInfoResult.getOutput();
+		for (loopk in fAppSpecInfoObj)
+			{
+			if (useAppSpecificGroupName)
+				{
+				appArray[fAppSpecInfoObj[loopk].getCheckboxType() + "." + fAppSpecInfoObj[loopk].checkboxDesc] = fAppSpecInfoObj[loopk].checklistComment;
+				aa.print("{" + fAppSpecInfoObj[loopk].getCheckboxType() + "." + fAppSpecInfoObj[loopk].checkboxDesc + "} = " + fAppSpecInfoObj[loopk].checklistComment)
+				}
+			else
+				{
+				appArray[fAppSpecInfoObj[loopk].checkboxDesc] = fAppSpecInfoObj[loopk].checklistComment;
+				aa.print("{" + fAppSpecInfoObj[loopk].checkboxDesc + "} = " + fAppSpecInfoObj[loopk].checklistComment)
+				}
+			}	
+	aa.print("Success")
+}
+else{
+	aa.print("Fail");
+}

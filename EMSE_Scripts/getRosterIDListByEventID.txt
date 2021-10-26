@@ -1,0 +1,12 @@
+//Long
+var eventID = 24;
+var result;
+result = aa.examination.getRosterIDListByEventID(eventID);
+if (result.getSuccess())
+{
+    aa.print("Success");
+}
+else
+{
+    aa.print("Failed:" + result.getErrorMessage());
+}

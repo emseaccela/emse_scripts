@@ -1,0 +1,31 @@
+capID = aa.cap.getCapID("11CAP","00000","00005").getOutput();
+agencyCode="AUTOTEST";
+callerID="ADMIN";
+invLevel=2;
+invNbr=36;
+balanceDue=10.00;
+var UnpaidInvoicesResult=aa.invoice.getUnpaidInvoices();
+var F4InvoiceScriptModelList;
+var F4InvoiceScriptModel;
+var tempF4InvoiceScriptModel;
+
+if(UnpaidInvoicesResult.getSuccess())
+{ 
+	F4InvoiceScriptModelList=UnpaidInvoicesResult.getOutput();
+	F4InvoiceScriptModel=F4InvoiceScriptModelList[0];
+	tempF4InvoiceScriptModel = F4InvoiceScriptModel.getInvoiceModel();
+	tempF4InvoiceScriptModel.setBalanceDue(balanceDue);
+	tempF4InvoiceScriptModel.setInvLevel(invLevel);
+	tempF4InvoiceScriptModel.setServiceProviderCode(agencyCode);
+	tempF4InvoiceScriptModel.setInvNbr(invNbr);
+	var InvoiceResult=aa.invoice.editInvoice(capID,tempF4InvoiceScriptModel);
+
+	if(InvoiceResult.getSuccess())
+	{
+    aa.print("Success")
+        }
+	else
+	{
+	aa.print("Fee invoice detail edit fail."+InvoiceResult.getErrorMessage());
+	}
+}

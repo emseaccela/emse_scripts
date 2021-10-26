@@ -1,0 +1,12 @@
+//String
+var providerNbr = 871334;
+var result;
+result = aa.licenseScript.getProviderBySeq( providerNbr );
+if (result.getSuccess())
+{
+    aa.print("Success");
+}
+else
+{
+    aa.print("Failed:" + result.getErrorMessage());
+}

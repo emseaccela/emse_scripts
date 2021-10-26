@@ -1,0 +1,14 @@
+var grp = "Building";
+var typ = "AtestType";
+var stype = "AtestSubtype";
+var cat = "AtestCategory";
+var desc = "Auto Test Create Appliation";
+var appCreateResult = aa.cap.createApp(grp,typ,stype,cat,desc);
+if(appCreateResult.getSuccess())
+{
+  aa.print("Success")
+}
+else
+{
+  aa.print("fail");
+}

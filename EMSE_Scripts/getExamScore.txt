@@ -1,0 +1,17 @@
+//final
+var providerNbr = 871334;
+//final
+var userExamIDArray = new Array();
+userExamIDArray.push('AUTOTEST');
+userExamIDArray.push('ADMIN');
+
+var result;
+result = aa.examination.getExamScore(providerNbr, userExamIDArray);
+if (result.getSuccess())
+{
+    aa.print("Success");
+}
+else
+{
+    aa.print("Failed:" + result.getErrorMessage());
+}

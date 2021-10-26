@@ -1,0 +1,34 @@
+id1 = "09TRE";
+id2 = "00000";
+id3 = "00001";
+var capContactNumber = 50331230;
+
+capIDResult = aa.cap.getCapID(id1, id2, id3);
+if(capIDResult.getSuccess())
+{
+	capID = capIDResult.getOutput();
+	capContactResult = aa.people.getCapContactByPK(capID , capContactNumber);	
+	if(capContactResult.getSuccess())
+	{
+		var capContactModel = capContactResult.getOutput().getCapContactModel();
+		//edit
+		capContactModel.setCity("SZ");
+		var result = aa.people.editContactByCapContact(capContactModel);
+		if (result.getSuccess())
+		{
+		    aa.print("Success");
+		}
+		else
+		{
+		    aa.print("Failed:" + result.getErrorMessage());
+		}	
+	}
+	else
+	{
+		aa.print("Failed:" + capContactResult.getErrorMessage());
+	}	
+}
+else
+{
+	aa.print("Failed:" + capIDResult.getErrorMessage());
+}		

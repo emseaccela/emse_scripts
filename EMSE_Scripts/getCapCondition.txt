@@ -1,0 +1,19 @@
+
+var capId1 = "11CAP";
+var capId2 = "00000";
+var capId3 = "00001";
+var conditionNumber = 178527;
+
+var capId = aa.cap.getCapID(capId1, capId2, capId3).getOutput();
+
+// get condition
+var capConditionResult = aa.capCondition.getCapCondition(capId, conditionNumber);
+
+if (capConditionResult.getSuccess())
+{
+    aa.print("Success")
+}
+else
+{
+	aa.print("ERROR: " + capConditionResult.getErrorMessage()); 
+}

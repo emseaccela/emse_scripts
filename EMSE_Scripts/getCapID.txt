@@ -1,0 +1,14 @@
+id1 = "11CAP";
+id2 = "00000";
+id3 = "00002";
+
+var capId = aa.cap.getCapID(id1, id2, id3);
+
+if(capId.getSuccess())
+{
+  aa.print("Success");
+}
+else
+{
+  aa.print("fail");
+}

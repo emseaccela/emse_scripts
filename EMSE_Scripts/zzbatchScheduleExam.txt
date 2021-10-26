@@ -1,0 +1,38 @@
+//Long
+var scheduleID = 2;
+//Long
+//actual date is 2012/05/27, this is maybe a bug of javascript. The month will be added one.
+var examDate = new Date(2012,4,27,9,0,0);
+
+//Long
+var locationID = 2;
+//List<CapIDModel>
+id11="11CAP";
+id21="00000";
+id31="00007";
+id12="11CAP";
+id22="00000";
+id32="00004";
+id13="11CAP";
+id23="00000";
+id33="00003";
+
+capID1 = aa.cap.getCapID(id11, id21, id31).getOutput();
+capID2 = aa.cap.getCapID(id12, id22, id32).getOutput();
+capID3 = aa.cap.getCapID(id13, id23, id33).getOutput();
+
+var capIDList = aa.util.newArrayList();
+capIDList.add(capID1);
+capIDList.add(capID2);
+capIDList.add(capID3);
+
+var result;
+result = aa.examination.batchScheduleExam(scheduleID,examDate.getTime(),locationID,capIDList);
+if (result.getSuccess())
+{
+    aa.print("Success");
+}
+else
+{
+    aa.print("Failed:" + result.getErrorMessage());
+}

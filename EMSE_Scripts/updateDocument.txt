@@ -1,0 +1,24 @@
+//DocumentModel
+
+var result;
+var documentID = "10000087";
+
+var docModelResult = aa.document.getDocumentByPK( documentID );
+if(docModelResult.getSuccess())
+{
+	docModel = docModelResult.getOutput();
+	docModel.setDocDescription("Update by AutoTest.");
+	result = aa.document.updateDocument(docModel);
+	if (result.getSuccess())
+	{
+	    aa.print("Success");
+	}
+	else
+	{
+	    aa.print("Failed:" + result.getErrorMessage());
+	}
+}
+else
+{
+	aa.print("Failed:" + docModelResult.getErrorMessage());
+}

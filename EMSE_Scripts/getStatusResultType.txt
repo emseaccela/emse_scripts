@@ -1,0 +1,16 @@
+//String
+var spc = "AUTOTEST";
+//String
+var statusGroupName = "YESNO";
+//String
+var statusName = "SUCCESS";
+var result;
+result = aa.guidesheet.getStatusResultType(spc,statusGroupName,statusName);
+if (result.getSuccess())
+{
+    aa.print("Success");
+}
+else
+{
+    aa.print("Failed:" + result.getErrorMessage());
+}

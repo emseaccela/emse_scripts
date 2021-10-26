@@ -1,0 +1,13 @@
+appGroup="Building";
+appType="Building/AtestType/AtestSubtype/AtestCategory";
+
+
+apps = aa.cap.getByAppType(appGroup, appType)
+if (apps.getSuccess())
+{
+    aa.print("Success")
+ }
+else
+{
+    aa.print("Fail");
+}

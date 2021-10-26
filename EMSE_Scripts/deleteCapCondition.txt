@@ -1,0 +1,18 @@
+var capId1 = "11CAP";
+var capId2 = "00000";
+var capId3 = "00002";
+var conditionNumber = 178520;
+
+var capId = aa.cap.getCapID(capId1, capId2, capId3).getOutput();
+
+// remove a condition
+var result = aa.capCondition.deleteCapCondition(capId, conditionNumber);
+
+if (result.getSuccess())
+{
+    aa.print("Success")
+}
+else
+{
+	aa.print("ERROR: " + result.getErrorMessage()); 
+}
