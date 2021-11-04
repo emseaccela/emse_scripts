@@ -28,7 +28,7 @@ eval(getScriptText("INCLUDES_ACCELA_GLOBALS", servProvCode, useProductScript));
 //eval(getScriptText("INCLUDES_CUSTOM", servProvCode, useProductScript));
 
 
-var newName = "tesTnewName";
+var newName = aa.env.getValue("newName");
 var pCapId = aa.env.getValue("pCapId");
 var appCreateResult = editAppName(newName,capId);
 
