@@ -44,6 +44,4 @@ aa.env.setValue("ScriptReturnCode", "0");
 aa.env.setValue("ScriptReturnMessage", message);
 aa.env.setValue("ScriptReturnMessage", debug);
 aa.env.setValue("isSuccess", "true");
-aa.env.setValue("RecordId",appCreateResult);
-aa.env.setValue("ParentCapId",capId);
 }
