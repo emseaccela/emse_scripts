@@ -29,7 +29,7 @@ eval(getScriptText("INCLUDES_ACCELA_GLOBALS", servProvCode, useProductScript));
 
 
 var pPriority = aa.env.getValue("priority");
-var pCapId = aa.env.getValue("pCapId");
+var pCapId = aa.env.getValue("CapId");
 var appCreateResult = editPriority(pPriority,pCapId);
 
 
