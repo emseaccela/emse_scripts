@@ -28,9 +28,9 @@ eval(getScriptText("INCLUDES_ACCELA_GLOBALS", servProvCode, useProductScript));
 //eval(getScriptText("INCLUDES_CUSTOM", servProvCode, useProductScript));
 
 
-var priority = aa.env.getValue("priority");
+var pPriority = aa.env.getValue("priority");
 var pCapId = aa.env.getValue("pCapId");
-var appCreateResult = editPriority(priority,pCapId);
+var appCreateResult = editPriority(pPriority,pCapId);
 
 
 if (debug.indexOf("**ERROR") > 0)
