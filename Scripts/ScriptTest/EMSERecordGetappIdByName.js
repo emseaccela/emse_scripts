@@ -31,7 +31,7 @@ eval(getScriptText("INCLUDES_ACCELA_GLOBALS", servProvCode, useProductScript));
 var pGroup = aa.env.getValue("numHouse");
 var pType = aa.env.getValue("type");
 var pappName = aa.env.getValue("appName");
-var appCreateResult = getAppIdByName(pnumHouse,pCapId);
+var appCreateResult = getAppIdByName(pGroup,pType,pappName);
 
 
 if (debug.indexOf("**ERROR") > 0)
