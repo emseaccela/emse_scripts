@@ -28,7 +28,10 @@ eval(getScriptText("INCLUDES_ACCELA_GLOBALS", servProvCode, useProductScript));
 //eval(getScriptText("INCLUDES_CUSTOM", servProvCode, useProductScript));
 
 
-var pCapId = aa.env.getValue("pCapId");
+var cap = aa.env.getValue("capId");
+var result = aa.cap.getCapID(cap);
+var capId = result.getOutput();
+
 var appCreateResult = parcelExistsOnCap(capId);
 
 
@@ -44,6 +47,4 @@ aa.env.setValue("ScriptReturnCode", "0");
 aa.env.setValue("ScriptReturnMessage", message);
 aa.env.setValue("ScriptReturnMessage", debug);
 aa.env.setValue("isSuccess", "true");
-aa.env.setValue("RecordId",appCreateResult);
-aa.env.setValue("ParentCapId",capId);
 }

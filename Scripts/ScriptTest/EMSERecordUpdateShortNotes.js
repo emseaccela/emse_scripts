@@ -29,7 +29,11 @@ eval(getScriptText("INCLUDES_ACCELA_GLOBALS", servProvCode, useProductScript));
 
 
 var newSN = aa.env.getValue("newSN");
-var pCapId = aa.env.getValue("pCapId");
+
+var cap = aa.env.getValue("capId");
+var result = aa.cap.getCapID(cap);
+var capId = result.getOutput();
+
 var appCreateResult = updateShortNotes(newSN, capId);
 
 

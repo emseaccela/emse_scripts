@@ -29,7 +29,11 @@ eval(getScriptText("INCLUDES_ACCELA_GLOBALS", servProvCode, useProductScript));
 
 
 var newName = aa.env.getValue("newName");
-var pCapId = aa.env.getValue("pCapId");
+
+var cap = aa.env.getValue("capId");
+var result = aa.cap.getCapID(cap);
+var capId = result.getOutput();
+
 var appCreateResult = editAppName(newName,capId);
 
 
@@ -45,6 +49,4 @@ aa.env.setValue("ScriptReturnCode", "0");
 aa.env.setValue("ScriptReturnMessage", message);
 aa.env.setValue("ScriptReturnMessage", debug);
 aa.env.setValue("isSuccess", "true");
-
-
 }
