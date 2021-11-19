@@ -44,7 +44,8 @@ aa.env.setValue("isSuccess", "false");
 else
 {
 aa.env.setValue("ScriptReturnCode", "0");
-aa.env.setValue("ScriptReturnMessage", message);
+//aa.env.setValue("ScriptReturnMessage", message);
 aa.env.setValue("ScriptReturnMessage", debug);
 aa.env.setValue("isSuccess", "true");
+aa.env.setValue("ScriptReturnMessage", appCreateResult);
 }
