@@ -28,9 +28,20 @@ eval(getScriptText("INCLUDES_ACCELA_GLOBALS", servProvCode, useProductScript));
 //eval(getScriptText("INCLUDES_CUSTOM", servProvCode, useProductScript));
 
 
+var cap = aa.env.getValue("capId");
+var result = aa.cap.getCapID(cap);
+var capId = result.getOutput();
+
 var licProfType = aa.env.getValue("licProfType");
 
-var appCreateResult = checkCapForLicensedProfessionalType(licProfType);
+var appCreateResult = checkCapForLicensedProfessionalType(licProfType, capId);
+
+
+
+
+//var licProfType = aa.env.getValue("licProfType");
+
+//var appCreateResult = checkCapForLicensedProfessionalType(licProfType);
 
 
 if (debug.indexOf("**ERROR") > 0)
@@ -42,8 +53,8 @@ aa.env.setValue("isSuccess", "false");
 else
 {
 aa.env.setValue("ScriptReturnCode", "0");
-aa.env.setValue("ScriptReturnMessage", message);
+//aa.env.setValue("ScriptReturnMessage", message);
 aa.env.setValue("ScriptReturnMessage", debug);
 aa.env.setValue("isSuccess", "true");
-//aa.env.setValue("ScriptReturnMessage", appCreateResult);
+aa.env.setValue("ScriptReturnMessage", appCreateResult);
 }
