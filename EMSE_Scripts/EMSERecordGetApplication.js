@@ -1,8 +1,8 @@
 var debug ="";
 showDebug = true;
 showMessage = true;
-var useProductScript = true;  
-var runEvent = false; 
+var useProductScript = true;
+var runEvent = false;
 var SCRIPT_VERSION = 3.0;
 servProvCode = aa.getServiceProviderCode();
 
@@ -28,11 +28,9 @@ eval(getScriptText("INCLUDES_ACCELA_GLOBALS", servProvCode, useProductScript));
 //eval(getScriptText("INCLUDES_CUSTOM", servProvCode, useProductScript));
 
 
+var applicationNumber = aa.env.getValue("applicationNumber");
 
-var pCapType = aa.env.getValue("pCapType");
-var pAppName = aa.env.getValue("pAppName");
-
-var appCreateResult = createCap(pCapType,pAppName);
+var appCreateResult = getApplication(applicationNumber);
 
 if (debug.indexOf("**ERROR") > 0)
 {
@@ -43,8 +41,8 @@ aa.env.setValue("isSuccess", "false");
 else
 {
 aa.env.setValue("ScriptReturnCode", "0");
-aa.env.setValue("ScriptReturnMessage", message);
+//aa.env.setValue("ScriptReturnMessage", message);
 aa.env.setValue("ScriptReturnMessage", debug);
 aa.env.setValue("isSuccess", "true");
-aa.env.setValue("RecordId",appCreateResult);
+aa.env.setValue("ScriptReturnMessage", appCreateResult);
 }
