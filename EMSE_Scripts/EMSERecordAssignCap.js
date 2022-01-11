@@ -27,14 +27,13 @@ eval(getScriptText("INCLUDES_ACCELA_FUNCTIONS", servProvCode, useProductScript))
 eval(getScriptText("INCLUDES_ACCELA_GLOBALS", servProvCode, useProductScript));
 //eval(getScriptText("INCLUDES_CUSTOM", servProvCode, useProductScript));
 
-var userID = aa.env.getValue("userID");
+var assignId= aa.env.getValue("assignId");
 
 var cap = aa.env.getValue("capId");
 var result = aa.cap.getCapID(cap);
-var capId = result.getOutput();
+var capId = result.getOutput();;
 
-var appCreateResult = assignCap(userID,capId);
-
+var appCreateResult = assignCap(assignId, capId);
 
 if (debug.indexOf("**ERROR") > 0)
 {
