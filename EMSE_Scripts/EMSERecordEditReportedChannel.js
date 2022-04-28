@@ -28,6 +28,7 @@ eval(getScriptText("INCLUDES_ACCELA_GLOBALS", servProvCode, useProductScript));
 //eval(getScriptText("INCLUDES_CUSTOM", servProvCode, useProductScript));
 
 
+//var reportedChannel = "emseTestChannel";
 var reportedChannel = aa.env.getValue("reportedChannel");
 
 var cap = aa.env.getValue("capId");

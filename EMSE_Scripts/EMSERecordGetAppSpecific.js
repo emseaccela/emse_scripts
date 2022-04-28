@@ -1,8 +1,8 @@
 var debug ="";
 showDebug = true;
 showMessage = true;
-var useProductScript = true;
-var runEvent = false;
+var useProductScript = true;  
+var runEvent = false; 
 var SCRIPT_VERSION = 3.0;
 servProvCode = aa.getServiceProviderCode();
 
@@ -28,12 +28,14 @@ eval(getScriptText("INCLUDES_ACCELA_GLOBALS", servProvCode, useProductScript));
 //eval(getScriptText("INCLUDES_CUSTOM", servProvCode, useProductScript));
 
 
+
+var itemName = aa.env.getValue("itemName");
+
 var cap = aa.env.getValue("capId");
 var result = aa.cap.getCapID(cap);
 var capId = result.getOutput();
 
-var appCreateResult = parcelExistsOnCap(capId);
-
+var appCreateResult = getAppSpecific(itemName,capId);
 
 if (debug.indexOf("**ERROR") > 0)
 {
@@ -47,4 +49,5 @@ aa.env.setValue("ScriptReturnCode", "0");
 aa.env.setValue("ScriptReturnMessage", message);
 aa.env.setValue("ScriptReturnMessage", debug);
 aa.env.setValue("isSuccess", "true");
+
 }

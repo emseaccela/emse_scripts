@@ -27,12 +27,11 @@ eval(getScriptText("INCLUDES_ACCELA_FUNCTIONS", servProvCode, useProductScript))
 eval(getScriptText("INCLUDES_ACCELA_GLOBALS", servProvCode, useProductScript));
 //eval(getScriptText("INCLUDES_CUSTOM", servProvCode, useProductScript));
 
-
+var pnumHouse = aa.env.getValue("numHouse");
 var cap = aa.env.getValue("capId");
 var result = aa.cap.getCapID(cap);
-var capId = result.getOutput();
-
-var appCreateResult = parcelExistsOnCap(capId);
+var pCapId = result.getOutput();
+var appCreateResult = editHouseCount(pnumHouse,pCapId);
 
 
 if (debug.indexOf("**ERROR") > 0)

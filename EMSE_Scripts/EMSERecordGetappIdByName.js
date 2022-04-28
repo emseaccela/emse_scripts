@@ -28,11 +28,10 @@ eval(getScriptText("INCLUDES_ACCELA_GLOBALS", servProvCode, useProductScript));
 //eval(getScriptText("INCLUDES_CUSTOM", servProvCode, useProductScript));
 
 
-var cap = aa.env.getValue("capId");
-var result = aa.cap.getCapID(cap);
-var capId = result.getOutput();
-
-var appCreateResult = parcelExistsOnCap(capId);
+var pGroup = aa.env.getValue("group");
+var pType = aa.env.getValue("type");
+var pappName = aa.env.getValue("appName");
+var appCreateResult = getAppIdByName(pGroup,pType,pappName);
 
 
 if (debug.indexOf("**ERROR") > 0)
@@ -47,4 +46,5 @@ aa.env.setValue("ScriptReturnCode", "0");
 aa.env.setValue("ScriptReturnMessage", message);
 aa.env.setValue("ScriptReturnMessage", debug);
 aa.env.setValue("isSuccess", "true");
+//aa.env.setValue("ScriptReturnMessage", appCreateResult);
 }

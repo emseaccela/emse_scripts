@@ -32,7 +32,7 @@ var cap = aa.env.getValue("capId");
 var result = aa.cap.getCapID(cap);
 var capId = result.getOutput();
 
-var appCreateResult = parcelExistsOnCap(capId);
+var appCreateResult = updateRefParcelToCap(capId);
 
 
 if (debug.indexOf("**ERROR") > 0)
